@@ -15,7 +15,6 @@ protocol ClearScoreViewModelProtocol {
 struct NetworkResponse :Codable {
     var fetchedCreditReport :CreditReport
 
-    
     enum CodingKeys: String, CodingKey {
         case fetchedCreditReport = "creditReportInfo"
     }
@@ -55,8 +54,5 @@ class ClearScoreViewModel :NSObject {
             
             self.viewModelDelegate?.viewModelFetchedReport(withScore: 0, maximumScore: 0, andErrorMessage:error?.localizedDescription)
         }
-        
     }
-    
-
 }

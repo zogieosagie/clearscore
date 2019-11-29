@@ -9,14 +9,6 @@
 import UIKit
 
 class CreditScoreMeter: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
     
     var circleLayer: CAShapeLayer?
 
@@ -24,8 +16,6 @@ class CreditScoreMeter: UIView {
         super.init(frame: frame)
         self.backgroundColor = UIColor.clear
 
-        // Use UIBezierPath as an easy way to create the CGPath for the layer.
-        // The path should be the entire circle.
         let circlePath = UIBezierPath(arcCenter: CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: (frame.size.width - 10)/2, startAngle: (-1 * .pi/2), endAngle: requiredAngle, clockwise: true)
 
         // Setup the CAShapeLayer with the path, colors, and line width

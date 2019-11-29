@@ -14,6 +14,13 @@ class ClearScoreViewController: UIViewController, ClearScoreViewModelProtocol {
     @IBOutlet weak var creditScoreLabel: UILabel!
     @IBOutlet weak var outermeterFrame: UIView!
     @IBOutlet weak var maximumScoreLabel: UILabel!
+    @IBOutlet weak var creditViewContainerWidthConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var captionLabel: UILabel!
+    @IBOutlet weak var creditViewContainerheightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var errorMessageContainer: UIView!
+    @IBOutlet weak var errorMessageLabel: UILabel!
     
     var clearScoreViewModel :ClearScoreViewModel?
     
@@ -21,6 +28,12 @@ class ClearScoreViewController: UIViewController, ClearScoreViewModelProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         clearScoreViewModel?.fetchCreditReport()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        forceRedrawWithExistingParameters()
     }
     
     func configureController(withViewModel viewModel :ClearScoreViewModel){
@@ -32,12 +45,21 @@ class ClearScoreViewController: UIViewController, ClearScoreViewModelProtocol {
         
         DispatchQueue.main.async { [weak self] in
             
-            let creditPercent = CGFloat(self?.computeFractionalScore(fromScore :creditScore, andMaximum :maximumScore) ?? -1.0 * .pi/2)
-            
-            self?.addCircle(inView: self!.outermeterFrame, withAngle: (2 * .pi), lineWidth: 3, color: UIColor.black)
-            self?.addCircle(inView: self!.innerMeterFrame, withAngle: creditPercent, lineWidth: 7, color: UIColor(red: 253.0/255.0, green: 197.0/255.0, blue: 100.0/255.0, alpha: 1.0))
-            
-            self?.creditScoreLabel.text = "\(creditScore)"
+            if(errorMessage == nil){
+                
+                self?.errorMessageContainer.isHidden = true
+                let creditPercent = CGFloat(self?.computeFractionalScore(fromScore :creditScore, andMaximum :maximumScore) ?? -1.0 * .pi/2)
+                
+                self?.addCircle(inView: self!.outermeterFrame, withAngle: (2 * .pi), lineWidth: 3, color: UIColor.black)
+                self?.addCircle(inView: self!.innerMeterFrame, withAngle: creditPercent, lineWidth: 7, color: UIColor(red: 253.0/255.0, green: 197.0/255.0, blue: 100.0/255.0, alpha: 1.0))
+                
+                self?.creditScoreLabel.text = "\(creditScore)"
+                self?.maximumScoreLabel.text = "out of \(maximumScore)"
+            }
+            else{
+                self?.errorMessageContainer.isHidden = false
+                self?.errorMessageLabel.text = errorMessage!
+            }
         }
     }
     
@@ -65,6 +87,21 @@ class ClearScoreViewController: UIViewController, ClearScoreViewModelProtocol {
 
          // Animate the drawing of the circle over the course of 1 second
         circleView.animateCircle(duration: 1.0)
+    }
+    
+    func forceRedrawWithExistingParameters()
+    {
+        let maximumAvailableSpace = min(self.view.frame.size.width, self.view.frame.size.height)
+        
+        creditViewContainerWidthConstraint.constant = maximumAvailableSpace - 2 * 40
+        creditViewContainerheightConstraint.constant = maximumAvailableSpace - 2 * 40
+        
+        if (self.view.frame.size.width > self.view.frame.size.height){
+            captionLabel.isHidden = true
+        }
+        else{
+            captionLabel.isHidden = false
+        }
     }
 
 

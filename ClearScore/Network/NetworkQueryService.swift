@@ -54,8 +54,4 @@ class NetworkQueryService {
         urlSessionDataTask?.resume()
       }
     }
-    
-    
-    
-    
 }
