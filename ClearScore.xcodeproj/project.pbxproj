@@ -9,12 +9,16 @@
 /* Begin PBXBuildFile section */
 		9058709923915701008FF8CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058709823915701008FF8CF /* AppDelegate.swift */; };
 		9058709B23915701008FF8CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058709A23915701008FF8CF /* SceneDelegate.swift */; };
-		9058709D23915701008FF8CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058709C23915701008FF8CF /* ViewController.swift */; };
+		9058709D23915701008FF8CF /* ClearScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058709C23915701008FF8CF /* ClearScoreViewController.swift */; };
 		905870A023915701008FF8CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9058709E23915701008FF8CF /* Main.storyboard */; };
 		905870A223915703008FF8CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 905870A123915703008FF8CF /* Assets.xcassets */; };
 		905870A523915703008FF8CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 905870A323915703008FF8CF /* LaunchScreen.storyboard */; };
 		905870B023915703008FF8CF /* ClearScoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905870AF23915703008FF8CF /* ClearScoreTests.swift */; };
 		905870BB23915703008FF8CF /* ClearScoreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905870BA23915703008FF8CF /* ClearScoreUITests.swift */; };
+		905870CB239157C8008FF8CF /* ClearScoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905870CA239157C8008FF8CF /* ClearScoreViewModel.swift */; };
+		905870CE23915815008FF8CF /* NetworkQueryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905870CD23915815008FF8CF /* NetworkQueryService.swift */; };
+		905870D223915897008FF8CF /* CreditReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905870D123915897008FF8CF /* CreditReport.swift */; };
+		905870D523916FF3008FF8CF /* CreditScoreMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905870D423916FF3008FF8CF /* CreditScoreMeter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +42,7 @@
 		9058709523915701008FF8CF /* ClearScore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClearScore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9058709823915701008FF8CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9058709A23915701008FF8CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9058709C23915701008FF8CF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9058709C23915701008FF8CF /* ClearScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearScoreViewController.swift; sourceTree = "<group>"; };
 		9058709F23915701008FF8CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		905870A123915703008FF8CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		905870A423915703008FF8CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +53,10 @@
 		905870B623915703008FF8CF /* ClearScoreUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClearScoreUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		905870BA23915703008FF8CF /* ClearScoreUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearScoreUITests.swift; sourceTree = "<group>"; };
 		905870BC23915703008FF8CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		905870CA239157C8008FF8CF /* ClearScoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearScoreViewModel.swift; sourceTree = "<group>"; };
+		905870CD23915815008FF8CF /* NetworkQueryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkQueryService.swift; sourceTree = "<group>"; };
+		905870D123915897008FF8CF /* CreditReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditReport.swift; sourceTree = "<group>"; };
+		905870D423916FF3008FF8CF /* CreditScoreMeter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditScoreMeter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,11 +107,13 @@
 		9058709723915701008FF8CF /* ClearScore */ = {
 			isa = PBXGroup;
 			children = (
-				9058709823915701008FF8CF /* AppDelegate.swift */,
-				9058709A23915701008FF8CF /* SceneDelegate.swift */,
-				9058709C23915701008FF8CF /* ViewController.swift */,
-				9058709E23915701008FF8CF /* Main.storyboard */,
+				905870D323916A25008FF8CF /* XcodeGenerated */,
+				905870CF2391582C008FF8CF /* Model */,
+				905870CC239157F0008FF8CF /* Network */,
+				905870C923915751008FF8CF /* ViewModel */,
+				905870C823915725008FF8CF /* Views */,
 				905870A123915703008FF8CF /* Assets.xcassets */,
+				9058709E23915701008FF8CF /* Main.storyboard */,
 				905870A323915703008FF8CF /* LaunchScreen.storyboard */,
 				905870A623915703008FF8CF /* Info.plist */,
 			);
@@ -126,6 +136,48 @@
 				905870BC23915703008FF8CF /* Info.plist */,
 			);
 			path = ClearScoreUITests;
+			sourceTree = "<group>";
+		};
+		905870C823915725008FF8CF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9058709C23915701008FF8CF /* ClearScoreViewController.swift */,
+				905870D423916FF3008FF8CF /* CreditScoreMeter.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		905870C923915751008FF8CF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				905870CA239157C8008FF8CF /* ClearScoreViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		905870CC239157F0008FF8CF /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				905870CD23915815008FF8CF /* NetworkQueryService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		905870CF2391582C008FF8CF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				905870D123915897008FF8CF /* CreditReport.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		905870D323916A25008FF8CF /* XcodeGenerated */ = {
+			isa = PBXGroup;
+			children = (
+				9058709823915701008FF8CF /* AppDelegate.swift */,
+				9058709A23915701008FF8CF /* SceneDelegate.swift */,
+			);
+			path = XcodeGenerated;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,9 +311,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9058709D23915701008FF8CF /* ViewController.swift in Sources */,
+				905870CE23915815008FF8CF /* NetworkQueryService.swift in Sources */,
+				905870D523916FF3008FF8CF /* CreditScoreMeter.swift in Sources */,
+				9058709D23915701008FF8CF /* ClearScoreViewController.swift in Sources */,
+				905870D223915897008FF8CF /* CreditReport.swift in Sources */,
 				9058709923915701008FF8CF /* AppDelegate.swift in Sources */,
 				9058709B23915701008FF8CF /* SceneDelegate.swift in Sources */,
+				905870CB239157C8008FF8CF /* ClearScoreViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,24 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Clear Score View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ClearScoreViewController" customModule="ClearScore" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gkw-Mh-kpv">
+                                <rect key="frame" x="42" y="283" width="330" height="330"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iqc-SE-sTV">
+                                        <rect key="frame" x="12" y="12" width="306" height="306"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Npf-It-Efj">
+                                        <rect key="frame" x="45" y="80" width="240" height="170"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-- --" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="twS-rY-kEh">
+                                                <rect key="frame" x="8" y="49" width="224" height="72"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="72" id="ECj-Sy-SsW"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="78"/>
+                                                <color key="textColor" red="0.99367374180000001" green="0.77225852009999996" blue="0.3935607076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your credit score is" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="93C-Nk-Gcx">
+                                                <rect key="frame" x="8" y="15.5" width="224" height="25.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25.5" id="MP2-6B-11M"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="21"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="out of 700" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="W1u-YJ-UCX">
+                                                <rect key="frame" x="8" y="129" width="224" height="33"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="33" id="jCW-5d-bNn"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="21"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="93C-Nk-Gcx" secondAttribute="trailing" constant="8" id="5st-ox-CCM"/>
+                                            <constraint firstAttribute="trailing" secondItem="W1u-YJ-UCX" secondAttribute="trailing" constant="8" id="9iW-7a-vUf"/>
+                                            <constraint firstItem="W1u-YJ-UCX" firstAttribute="leading" secondItem="Npf-It-Efj" secondAttribute="leading" constant="8" id="IYi-4x-rjD"/>
+                                            <constraint firstItem="W1u-YJ-UCX" firstAttribute="top" secondItem="twS-rY-kEh" secondAttribute="bottom" constant="8" id="Im8-aQ-hFn"/>
+                                            <constraint firstItem="twS-rY-kEh" firstAttribute="top" secondItem="93C-Nk-Gcx" secondAttribute="bottom" constant="8" id="ZBr-nn-gQP"/>
+                                            <constraint firstItem="twS-rY-kEh" firstAttribute="leading" secondItem="Npf-It-Efj" secondAttribute="leading" constant="8" id="ejH-1I-2NI"/>
+                                            <constraint firstItem="twS-rY-kEh" firstAttribute="centerY" secondItem="Npf-It-Efj" secondAttribute="centerY" id="kuU-Ye-Wrs"/>
+                                            <constraint firstItem="93C-Nk-Gcx" firstAttribute="leading" secondItem="Npf-It-Efj" secondAttribute="leading" constant="8" id="vVm-GG-KVm"/>
+                                            <constraint firstAttribute="trailing" secondItem="twS-rY-kEh" secondAttribute="trailing" constant="8" id="wm1-2m-PJn"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="gkw-Mh-kpv" secondAttribute="height" multiplier="1:1" id="2Nx-dX-MXW"/>
+                                    <constraint firstAttribute="bottom" secondItem="Iqc-SE-sTV" secondAttribute="bottom" constant="12" id="3Ng-a6-Sar"/>
+                                    <constraint firstAttribute="bottom" secondItem="Npf-It-Efj" secondAttribute="bottom" constant="80" id="Imr-Ox-gCl"/>
+                                    <constraint firstItem="Npf-It-Efj" firstAttribute="leading" secondItem="gkw-Mh-kpv" secondAttribute="leading" constant="45" id="NRA-5a-hkx"/>
+                                    <constraint firstItem="Iqc-SE-sTV" firstAttribute="leading" secondItem="gkw-Mh-kpv" secondAttribute="leading" constant="12" id="aC5-VJ-qY1"/>
+                                    <constraint firstItem="Npf-It-Efj" firstAttribute="top" secondItem="gkw-Mh-kpv" secondAttribute="top" constant="80" id="d3c-d5-UqG"/>
+                                    <constraint firstAttribute="trailing" secondItem="Npf-It-Efj" secondAttribute="trailing" constant="45" id="hAI-kr-Jfj"/>
+                                    <constraint firstItem="Iqc-SE-sTV" firstAttribute="top" secondItem="gkw-Mh-kpv" secondAttribute="top" constant="12" id="icx-Oe-2Oc"/>
+                                    <constraint firstAttribute="trailing" secondItem="Iqc-SE-sTV" secondAttribute="trailing" constant="12" id="qaK-vf-DYx"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="gkw-Mh-kpv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ChQ-EP-Eb4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gkw-Mh-kpv" secondAttribute="trailing" constant="42" id="Xix-28-mOm"/>
+                            <constraint firstItem="gkw-Mh-kpv" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="pLk-lX-5vw"/>
+                            <constraint firstItem="gkw-Mh-kpv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="42" id="xOF-3M-KpS"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="creditScoreLabel" destination="twS-rY-kEh" id="a3w-AJ-gK2"/>
+                        <outlet property="innerMeterFrame" destination="Iqc-SE-sTV" id="MFg-on-Wtd"/>
+                        <outlet property="maximumScoreLabel" destination="W1u-YJ-UCX" id="M02-Io-VC4"/>
+                        <outlet property="outermeterFrame" destination="gkw-Mh-kpv" id="p9G-IH-FGp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="120.53571428571428"/>
         </scene>
     </scenes>
 </document>
