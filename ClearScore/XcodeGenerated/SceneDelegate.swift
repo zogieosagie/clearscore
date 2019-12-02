@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 
         let clearScoreViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! ClearScoreViewController
         
-        clearScoreViewController.configureController(withViewModel: ClearScoreViewModel())
+        clearScoreViewController.configureController(withViewModel: ClearScoreViewModel(withNetworkQueryService: NetworkQueryService()))
 
         window!.rootViewController = clearScoreViewController
         window!.makeKeyAndVisible()

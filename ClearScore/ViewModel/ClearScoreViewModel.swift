@@ -12,22 +12,19 @@ protocol ClearScoreViewModelProtocol {
     func viewModelFetchedReport(withScore creditScore:Int, maximumScore :Int, andErrorMessage errorMessage :String?)
 }
 
-struct NetworkResponse :Codable {
-    var fetchedCreditReport :CreditReport
-
-    enum CodingKeys: String, CodingKey {
-        case fetchedCreditReport = "creditReportInfo"
-    }
-}
-
 class ClearScoreViewModel :NSObject {
     
     private let kResourceBaseUrl = "https://5lfoiyb0b3.execute-api.us-west-2.amazonaws.com/prod/mockcredit/values"
     private let kResourceUrlQuery = ""
-    private let networkQueryService = NetworkQueryService()
-    private var creditReport :CreditReport?
+    private var networkQueryService : NetworkQueryService!
+    private var creditReport :CreditReport.CreditReportInfo?
     
     var viewModelDelegate :ClearScoreViewModelProtocol?
+    
+    init(withNetworkQueryService queryService: NetworkQueryService) {
+        super.init()
+        networkQueryService = queryService
+    }
     
     
     func fetchCreditReport()
@@ -42,7 +39,7 @@ class ClearScoreViewModel :NSObject {
         if(error == nil){
             do{
                 
-                creditReport = try JSONDecoder().decode(NetworkResponse.self, from: data!).fetchedCreditReport
+                creditReport = try JSONDecoder().decode(CreditReport.self, from: data!).creditReportInfo
                 self.viewModelDelegate?.viewModelFetchedReport(withScore: creditReport?.score ?? 0, maximumScore: creditReport?.maxScoreValue ?? 0, andErrorMessage: nil)
                 
             }

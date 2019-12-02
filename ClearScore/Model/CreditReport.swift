@@ -8,14 +8,23 @@
 
 import Foundation
 
-class CreditReport : Codable {
-    let score :Int
-    let maxScoreValue :Int
+struct CreditReport : Codable {
+    
+    struct CreditReportInfo : Codable {
+        let score :Int
+        let maxScoreValue :Int
+        
+        enum CodingKeys: String, CodingKey {
+            case score
+            case maxScoreValue
+        }
+    }
+    let creditReportInfo : CreditReportInfo
     
     enum CodingKeys: String, CodingKey {
-        case score
-        case maxScoreValue
+        case creditReportInfo
     }
+
 }
 
 
