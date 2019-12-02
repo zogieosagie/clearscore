@@ -95,6 +95,21 @@
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAS-rS-vih">
+                                <rect key="frame" x="137" y="633" width="140" height="40"/>
+                                <color key="backgroundColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="00j-eq-tmb"/>
+                                    <constraint firstAttribute="height" constant="40" id="Tnt-ie-Mf0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <state key="normal" title="Refresh report">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="refreshReportRequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iuP-p8-XUg"/>
+                                </connections>
+                            </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zpe-cb-FnS">
                                 <rect key="frame" x="57" y="357" width="300" height="182"/>
                                 <subviews>
@@ -139,10 +154,12 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="UAS-rS-vih" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1uk-fR-1R5"/>
                             <constraint firstItem="sqF-Ju-yFv" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="35" id="3Pw-MP-lCl"/>
                             <constraint firstItem="Zpe-cb-FnS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GTw-fF-VGL"/>
                             <constraint firstItem="sqF-Ju-yFv" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="MGS-ez-oP5"/>
                             <constraint firstItem="gkw-Mh-kpv" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="X99-W4-ep6"/>
+                            <constraint firstItem="UAS-rS-vih" firstAttribute="top" secondItem="gkw-Mh-kpv" secondAttribute="bottom" constant="20" id="d7S-3L-I5a"/>
                             <constraint firstItem="sqF-Ju-yFv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jer-1R-EVu"/>
                             <constraint firstItem="gkw-Mh-kpv" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="pLk-lX-5vw"/>
                             <constraint firstItem="gkw-Mh-kpv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ps4-Jn-u3z"/>
@@ -160,6 +177,7 @@
                         <outlet property="innerMeterFrame" destination="Iqc-SE-sTV" id="MFg-on-Wtd"/>
                         <outlet property="maximumScoreLabel" destination="W1u-YJ-UCX" id="M02-Io-VC4"/>
                         <outlet property="outermeterFrame" destination="gkw-Mh-kpv" id="p9G-IH-FGp"/>
+                        <outlet property="refreshReportButton" destination="UAS-rS-vih" id="P08-Ia-Mql"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

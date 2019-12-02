@@ -22,12 +22,20 @@ class ClearScoreViewController: UIViewController, ClearScoreViewModelProtocol {
     @IBOutlet weak var errorMessageContainer: UIView!
     @IBOutlet weak var errorMessageLabel: UILabel!
     
+    @IBOutlet weak var refreshReportButton: UIButton!
     var clearScoreViewModel :ClearScoreViewModel?
     
     @IBOutlet weak var innerMeterFrame: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         clearScoreViewModel?.fetchCreditReport()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        refreshReportButton.layer.cornerRadius = 5.0
     }
     
     override func viewWillLayoutSubviews() {
@@ -98,11 +106,27 @@ class ClearScoreViewController: UIViewController, ClearScoreViewModelProtocol {
         
         if (self.view.frame.size.width > self.view.frame.size.height){
             captionLabel.isHidden = true
+            refreshReportButton.isHidden = true
         }
         else{
             captionLabel.isHidden = false
+            refreshReportButton.isHidden = false
         }
     }
+    
+    @IBAction func refreshReportRequest(_ sender: Any)
+    {
+        creditScoreLabel.text = "-- --"
+        maximumScoreLabel.text = ""
+        let subViews = innerMeterFrame.subviews
+        
+        for thisSubview in subViews {
+            thisSubview.removeFromSuperview()
+        }
+        
+        clearScoreViewModel?.fetchCreditReport()
+    }
+    
 
 
 }
