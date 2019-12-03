@@ -49,14 +49,14 @@ class ClearScoreViewController: UIViewController, ClearScoreViewModelProtocol {
         clearScoreViewModel?.viewModelDelegate = self
     }
     
-    func viewModelFetchedReport(withScore creditScore: Int, maximumScore: Int, andErrorMessage errorMessage: String?) {
+    func viewModelFetchedReport(withScore creditScore: Int, maximumScore: Int, fractionalScore: Double, andErrorMessage errorMessage: String?) {
         
         DispatchQueue.main.async { [weak self] in
             
             if(errorMessage == nil){
                 
                 self?.errorMessageContainer.isHidden = true
-                let creditPercent = CGFloat(self?.computeFractionalScore(fromScore :creditScore, andMaximum :maximumScore) ?? -1.0 * .pi/2)
+                let creditPercent = CGFloat(fractionalScore + (-1.0 * .pi/2))//We start drawing at -90deg
                 
                 self?.addCircle(inView: self!.outermeterFrame, withAngle: (2 * .pi), lineWidth: 3, color: UIColor.black)
                 self?.addCircle(inView: self!.innerMeterFrame, withAngle: creditPercent, lineWidth: 7, color: UIColor(red: 253.0/255.0, green: 197.0/255.0, blue: 100.0/255.0, alpha: 1.0))
@@ -71,15 +71,6 @@ class ClearScoreViewController: UIViewController, ClearScoreViewModelProtocol {
         }
     }
     
-    func computeFractionalScore(fromScore creditScore :Int, andMaximum maxScore :Int) -> Double {
-        
-        var fractionalScore = -1.0 * .pi/2 //We start drawing at -90deg
-        if(maxScore > 0){
-            fractionalScore = fractionalScore + ( Double(creditScore) / Double(maxScore)) * 2.0 * .pi
-        }
-        
-        return fractionalScore
-    }
     
     func addCircle(inView targetView:UIView, withAngle angle:CGFloat, lineWidth :CGFloat, color :UIColor)
     {

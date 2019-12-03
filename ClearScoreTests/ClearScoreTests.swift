@@ -10,25 +10,38 @@ import XCTest
 @testable import ClearScore
 
 class ClearScoreTests: XCTestCase {
+    
+    var systemUnderTest: ClearScoreViewModel!
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        super.setUp()
+        systemUnderTest = ClearScoreViewModel(withNetworkQueryService: NetworkQueryService())
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        systemUnderTest = nil
+        super.tearDown()
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testEdgeCaseMaxCreditScoreCalculation(){
+        let fractionalScore = systemUnderTest.computeFractionalScore(fromScore: 700, andMaximum: 700)
+        XCTAssertEqual(fractionalScore!, (2 * .pi), "Failed: Expected computed fractional score to be 2*pi. Function returned \(fractionalScore!)")
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testEdgeCaseMinCreditScoreCalculation(){
+        let fractionalScore = systemUnderTest.computeFractionalScore(fromScore: 0, andMaximum: 700)
+        XCTAssertEqual(fractionalScore!, 0.0, "Failed: Expected computed fractional score to be 0.0. Function returned \(fractionalScore!)")
+    }
+    
+    func testErrorCaseInvalidInputCalculation(){
+        let fractionalScore = systemUnderTest.computeFractionalScore(fromScore: 0, andMaximum: 0)
+        XCTAssertTrue((fractionalScore == nil), "Failed: Expected computed fractional score to be nil. Function returned \(fractionalScore!)")
+    }
+    
+    func testNormalCreditScoreCalculation(){
+        let fractionalScore = systemUnderTest.computeFractionalScore(fromScore: 350, andMaximum: 700)
+        XCTAssertEqual(fractionalScore!, (1 * .pi), "Failed: Expected computed fractional score to be pi. Function returned \(fractionalScore!)")
     }
 
 }

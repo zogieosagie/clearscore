@@ -9,7 +9,7 @@
 import Foundation
 
 protocol ClearScoreViewModelProtocol {
-    func viewModelFetchedReport(withScore creditScore:Int, maximumScore :Int, andErrorMessage errorMessage :String?)
+    func viewModelFetchedReport(withScore creditScore:Int, maximumScore :Int, fractionalScore :Double, andErrorMessage errorMessage :String?)
 }
 
 class ClearScoreViewModel :NSObject {
@@ -40,16 +40,40 @@ class ClearScoreViewModel :NSObject {
             do{
                 
                 creditReport = try JSONDecoder().decode(CreditReport.self, from: data!).creditReportInfo
-                self.viewModelDelegate?.viewModelFetchedReport(withScore: creditReport?.score ?? 0, maximumScore: creditReport?.maxScoreValue ?? 0, andErrorMessage: nil)
+                
+                let fractionalScore = computeFractionalScore(fromScore: creditReport?.score, andMaximum: creditReport?.maxScoreValue)
+                
+                if(fractionalScore != nil)
+                {
+                    //If we have a valid fractional score, then its safe to unwrap creditReport
+                    self.viewModelDelegate?.viewModelFetchedReport(withScore: creditReport!.score, maximumScore: creditReport!.maxScoreValue, fractionalScore: fractionalScore!, andErrorMessage: nil)
+                }
+                else{
+                    self.viewModelDelegate?.viewModelFetchedReport(withScore: 0, maximumScore: 0, fractionalScore: 0, andErrorMessage: NSLocalizedString("Credit report could not be calculated.", comment: "NEEDS_LOCALIZATION"))
+                }
                 
             }
             catch{
-                self.viewModelDelegate?.viewModelFetchedReport(withScore: 0, maximumScore: 0, andErrorMessage: NSLocalizedString("Credit report could not be retrieved.", comment: "NEEDS_LOCALIZATION"))
+                self.viewModelDelegate?.viewModelFetchedReport(withScore: 0, maximumScore: 0, fractionalScore: 0, andErrorMessage: NSLocalizedString("Credit report could not be retrieved.", comment: "NEEDS_LOCALIZATION"))
             }
         }
         else{
             
-            self.viewModelDelegate?.viewModelFetchedReport(withScore: 0, maximumScore: 0, andErrorMessage:error?.localizedDescription)
+            self.viewModelDelegate?.viewModelFetchedReport(withScore: 0, maximumScore: 0, fractionalScore: 0, andErrorMessage:error?.localizedDescription)
         }
+    }
+    
+    func computeFractionalScore(fromScore creditScore :Int?, andMaximum maxScore :Int?) -> Double? {
+        
+        var fractionalScore :Double?
+        
+        if let cScore = creditScore, let mScore = maxScore{
+            
+            if(mScore > 0){
+                fractionalScore = ( Double(cScore) / Double(mScore)) * 2.0 * .pi
+            }
+        }
+        
+        return fractionalScore
     }
 }
